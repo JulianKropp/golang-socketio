@@ -103,9 +103,14 @@ func (wst *WebsocketTransport) Connect(url string) (conn Connection, err error) 
 		dialer.Jar = wst.Cookie
 	}
 
-	socket, _, err := dialer.Dial(url, wst.RequestHeader)
+	socket, resp, err := dialer.Dial(url, wst.RequestHeader)
 	if err != nil {
-		return nil, err
+		resp.Body.Close()
+		body, err2 := io.ReadAll(resp.Body)
+		if err2 != nil {
+			return nil, err
+		}
+		return nil, errors.New(err.Error() + " " + resp.Status + ": " + string(body))
 	}
 
 	return &WebsocketConnection{socket, wst}, nil
