@@ -2,10 +2,12 @@ package transport
 
 import (
 	"errors"
-	"github.com/gorilla/websocket"
+	"io"
 	"io/ioutil"
 	"net/http"
 	"time"
+
+	"github.com/gorilla/websocket"
 )
 
 const (
@@ -90,10 +92,17 @@ type WebsocketTransport struct {
 	BufferSize int
 
 	RequestHeader http.Header
+
+	Cookie http.CookieJar
+
 }
 
 func (wst *WebsocketTransport) Connect(url string) (conn Connection, err error) {
 	dialer := websocket.Dialer{}
+	if wst.Cookie != nil {
+		dialer.Jar = wst.Cookie
+	}
+
 	socket, _, err := dialer.Dial(url, wst.RequestHeader)
 	if err != nil {
 		return nil, err
