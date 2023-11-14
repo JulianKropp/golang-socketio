@@ -12,8 +12,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/JulianKropp/golang-socketio/protocol"
-	"github.com/JulianKropp/golang-socketio/transport"
+	"github.com/bigbluebutton-bot/golang-socketio/protocol"
+	"github.com/bigbluebutton-bot/golang-socketio/transport"
 )
 
 const (

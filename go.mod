@@ -1,4 +1,4 @@
-module github.com/JulianKropp/golang-socketio
+module github.com/bigbluebutton-bot/golang-socketio
 
 go 1.19
 

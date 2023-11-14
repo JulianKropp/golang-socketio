@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/JulianKropp/golang-socketio/transport"
+	"github.com/bigbluebutton-bot/golang-socketio/transport"
 )
 
 type Channel struct {

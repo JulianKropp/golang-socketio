@@ -9,7 +9,7 @@ Examples directory contains simple client and server.
 
 ### Installation
 
-    go get github.com/JulianKropp/golang-socketio
+    go get github.com/bigbluebutton-bot/golang-socketio
 
 ### Simple server usage
 
